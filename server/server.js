@@ -15,4 +15,10 @@ httpServer.listen(port, () => {
 
 io.on("connection", (socket) => {
   console.log("Yay! Socket connected!")
+
+  socket.on('send-changes', (delta) => {
+    console.log(delta);
+    //io.emit('editedContent', editedContent)
+    socket.broadcast.emit('recieve-changes', delta)
+  })
 })
