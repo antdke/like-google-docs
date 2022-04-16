@@ -27,7 +27,11 @@ function Editor() {
     
   }, []);
 
-  // TODO: Fix infinite loop
+  // TODO:
+  // - React Router in the frontend
+  // - Think more about MongoDB (Atlas) vs SQL for this
+
+
 
   // SETTING UP THE SOCKET CONNECTION
   useEffect(() => {
@@ -35,9 +39,9 @@ function Editor() {
 
     setSocket(socketInstance)
     
-    // return (() => {
-    //   socket.disconnect()
-    // })
+    return () => {
+      socketInstance.disconnect()
+    }
   },[])
 
   // SEND CHANGES
